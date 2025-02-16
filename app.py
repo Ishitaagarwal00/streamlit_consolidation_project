@@ -6,17 +6,19 @@ import streamlit.components.v1 as stc
 from eda_app import run_eda_app
 from ml_app import run_ml_app
 
-
+st.set_page_config(
+	page_title='Consolidation project: Streamlit',
+	layout='wide',
+	initial_sidebar_state='auto'
+)
 
 # Función main()
 def main():
 
-	st.title('Consolidation project: Streamlit')
+	st.title('App for the early detection of Diabetes Mellitus')
 	menu = st.sidebar.selectbox('Menu ', ['Home', 'EDA', 'ML', 'Info'], )
-	submenu = st.sidebar.selectbox('Submenu', ['Descriptive', 'Visual'])
 
 	if menu == 'Home':
-		st.title('App for the early detection of Diabetes Mellitus')
 		st.subheader('Home')
 		st.markdown('### App for the early detection of Diabetes Mellitus')
 		st.markdown('dataset ...')
