@@ -46,11 +46,21 @@ def run_eda_app():
 		with two_thirds:
 			with st.expander('Graphs of gender distribution'):
 				fig, ax = plt.subplots()
-				sns.countplot(data=df['Gender'], ax=ax)
+				sns.countplot(
+					data=df, 
+					x='Gender',
+					orient='v',
+					palette='Set2',
+					ax=ax)
 				st.pyplot(fig)
 			with st.expander('Graphs of class distribution'):
 				fig, ax = plt.subplots()
-				sns.countplot(data=df['class'], ax=ax)
+				sns.countplot(
+					data=df, 
+					x='class',
+					orient='v',
+					palette='Set2',
+					ax=ax)
 				st.pyplot(fig)
 		with one_third:
 			with st.expander('Gender distribution'):
@@ -59,15 +69,35 @@ def run_eda_app():
 				st.dataframe(class_distribution)
 		with st.expander('Frequency distribution plot per age'):
 			fig, ax = plt.subplots()
-			sns.barplot(data=df_freq_dist_age, x=df_freq_dist_age['Age'], y=df_freq_dist_age['count'], ax=ax)
+			sns.barplot(
+				data=df_freq_dist_age, 
+				x='Age', 
+				y='count',
+				hue='Age',
+				palette='Set2', 
+				ax=ax)
+			plt.xticks(rotation=45)
 			st.pyplot(fig)
 		with st.expander('Outlier detection plot'):
 			fig, ax = plt.subplots()
-			sns.boxplot(data=df, x=df['Gender'], y=df['Age'], ax=ax)
+			sns.boxplot(
+				data=df, 
+				x='Gender', 
+				y='Age',
+				hue='Gender', 
+				palette='Set2',
+				ax=ax)
 			st.pyplot(fig)
 		with st.expander('Correlation matrix'):
 			fig, ax = plt.subplots()
-			sns.heatmap(df_clean.corr(), annot=True, ax=ax)
+			sns.heatmap(
+				df_clean.corr(), 
+				annot=True, 
+				fmt='.2f', 
+				annot_kws={"size": 6}, 
+				cbar_kws={"shrink": 1, 'aspect': 30, 'pad': 0.02, 'label': 'Correlation coefficient'},
+				ax=ax)
+			ax.tick_params(axis='both', which='major', labelsize=6)
 			st.pyplot(fig)
 
 
