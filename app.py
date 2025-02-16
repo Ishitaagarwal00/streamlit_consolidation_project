@@ -15,18 +15,47 @@ from ml_app import run_ml_app
 # Función main()
 def main():
 
-	st.title('App for the early detection of Diabetes Mellitus')
+	st.markdown(
+		"""
+		<div style='background-color: #3872FB; padding: 10px; border-radius: 5px;'>
+		<h1 style='color: white; text-align: center'>App for the early detection of Diabetes Mellitus</h1>
+		<h2 style='color: white; text-align: center'>DM</h2>
+		</div>
+		<div style='height: 20px;'></div>
+		""",
+		unsafe_allow_html=True
+	)
 	menu = st.sidebar.selectbox('Menu ', ['Home', 'EDA', 'ML', 'Info'], )
 
 	if menu == 'Home':
 		st.subheader('Home')
 		st.markdown('### App for the early detection of Diabetes Mellitus')
-		st.markdown('dataset ...')
+		st.markdown('dataset contains signals and symptoms that might indicate diabetes mellitus')
 		st.markdown('### Data source')
-		st.markdown('link ...')
+		st.markdown(
+			"""
+			<div style='background-color: #D3D3D3; padding: 10px; border-radius: 5px;'>
+				<ul>
+					<li style='color: black'><a href="https://archive.ics.uci.edu/ml/datasets/Early+stage+diabetes+risk+prediction+dataset" target="_blank">Link</a></li>
+				</ul>
+			</div>
+			<div style='height: 20px;'></div>
+			""",
+			unsafe_allow_html=True
+		)
 		st.markdown('### App content')
-		st.markdown('EDA section')
-		st.markdown('ML section')
+		st.markdown(
+			"""
+			<div style='background-color: #D3D3D3; padding: 10px; border-radius: 5px;'>
+				<ul>
+					<li style='color: black'>EDA section: Exploratory data analysis</li>
+					<li style='color: black'>ML section: Diabetes prediction based on ML (Machine Learning)</li>
+				</ul>
+			</div>
+			<div style='height: 20px;'></div>
+			""",
+			unsafe_allow_html=True
+		)
 	elif menu == 'EDA':
 		run_eda_app()
 	elif menu == 'ML':
